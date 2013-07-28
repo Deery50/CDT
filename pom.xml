@@ -21,6 +21,11 @@
 			<id>milkbowl-repo</id>
 			<url>http://ci.herocraftonline.com/plugin/repository/everything/</url>
 		</repository>
+		<repository>
+  			<id>comphenix-rep</id>
+  			<name>Comphenix Maven Releases</name>
+  			<url>http://repo.comphenix.net/content/groups/public</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
@@ -37,6 +42,11 @@
   			<version>1.2.27</version>
   			<scope>provided</scope>
 		</dependency>
+		<dependency>
+  			<groupId>com.earth2me.essentials</groupId>
+  			<artifactId>Essentials</artifactId>
+ 			<version>Dev2.12.53</version>
+ 		</dependency>
 	</dependencies>
 
 	<build>
