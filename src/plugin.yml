@@ -16,7 +16,7 @@ permissions:
     cdt.setprice:
         description: Gives access to /cdt setprice command to set the price per block
     cdt.stats:
-        description: Gives access to /cdt stats command
+        description: Gives access to /cdt stats command which shows statistics on how much money has been spent on warps
     cdt.*:
         description: Gives access to all /cdt commands
         children:
