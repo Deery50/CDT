@@ -1,0 +1,26 @@
+main: com.runetooncraft.plugins.CostDistanceTeleporter.CDT
+name: CDT
+version: 1.0.0
+depend: [Vault, Essentials]
+author: Deery50
+description: Money cost per type of Teleport
+commands:
+    cdt:
+        description: Base command for CostDistanceTeleporter
+        usage: |
+permissions:
+    cdt.bypass:
+        description: Gives access to bypass CostDistanceTeleporter and not have to pay money to warp
+    cdt.price:
+        description: Gives access to /cdt price command
+    cdt.setprice:
+        description: Gives access to /cdt setprice command to set the price per block
+    cdt.stats:
+        description: Gives access to /cdt stats command
+    cdt.*:
+        description: Gives access to all /cdt commands
+        children:
+            cdt.bypass: true
+            cdt.price: true
+            cdt.setprice: true
+            cdt.stats: true
