@@ -49,7 +49,7 @@ public class CDT extends JavaPlugin {
 			throw new IllegalStateException("The config-file was not loaded correctly!");
 		}
 		passconfig();
-//		config.save();	
+//		config.save(); This was just for debugging purposes
 	}
 
 	private void passconfig() {
