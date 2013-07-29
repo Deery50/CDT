@@ -22,9 +22,9 @@
 			<url>http://ci.herocraftonline.com/plugin/repository/everything/</url>
 		</repository>
 		<repository>
-  			<id>comphenix-rep</id>
-  			<name>Comphenix Maven Releases</name>
-  			<url>http://repo.comphenix.net/content/groups/public</url>
+  			<id>deery50-repo</id>
+  			<name>Deery50 Maven Releases</name>
+  			<url>https://repository-deery50.forge.cloudbees.com/release</url>
 		</repository>
 	</repositories>
 
