@@ -1,5 +1,6 @@
 package com.runetooncraft.plugins.CostDistanceTeleporter;
 
+
 import org.bukkit.Location;
 
 public class parseLocation {

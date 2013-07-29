@@ -11,6 +11,7 @@ import org.bukkit.World;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 
+
 public class Config {
 
 	private YamlConfiguration config;
