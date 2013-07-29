@@ -7,11 +7,9 @@
 	<version>1.0.1</version>
 	<name>CDT</name>
 	<url>http://maven.apache.org</url>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
 	<repositories>
 		<repository>
 			<id>bukkit-repo</id>
@@ -27,7 +25,6 @@
   			<url>https://repository-deery50.forge.cloudbees.com/release</url>
 		</repository>
 	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.bukkit</groupId>
@@ -60,5 +57,10 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>		
+		</resources>
 	</build>
 </project>
