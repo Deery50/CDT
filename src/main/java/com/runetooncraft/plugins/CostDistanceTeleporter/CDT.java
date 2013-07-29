@@ -14,7 +14,7 @@ import com.earth2me.essentials.IEssentials;
 
 public class CDT extends JavaPlugin {
 	/* Currently CDT depends on Vault and for now, Essentials. It depends on essentials right now because
-	 * it is the only warp plugin that CDT works with at the moment, more may come later.
+	 * it is the only warp plugin that CDT works with at the moment. More could possibly come later.
 	 */
 	Config config = null;
 	public static IEssentials ess;
