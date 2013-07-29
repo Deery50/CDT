@@ -7,9 +7,11 @@
 	<version>1.0.1</version>
 	<name>CDT</name>
 	<url>http://maven.apache.org</url>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<repositories>
 		<repository>
 			<id>bukkit-repo</id>
@@ -21,18 +23,24 @@
 		</repository>
 		<repository>
   			<id>deery50-repo</id>
-  			<name>Deery50 Maven Releases</name>
+  			<name>Deery50's Maven Releases</name>
   			<url>https://repository-deery50.forge.cloudbees.com/release</url>
 		</repository>
 	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
-			<version>1.6.2-R0.1-SNAPSHOT</version>
+			<version>1.4.7-R1.0</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+  			<groupId>com.earth2me.essentials</groupId>
+  			<artifactId>Essentials</artifactId>
+ 			<version>Dev2.12.53</version>
+ 		</dependency>
   		<dependency>
   			<groupId>net.milkbowl.vault</groupId>
   			<artifactId>Vault</artifactId>
@@ -40,11 +48,13 @@
   			<scope>provided</scope>
 		</dependency>
 		<dependency>
-  			<groupId>com.earth2me.essentials</groupId>
-  			<artifactId>Essentials</artifactId>
- 			<version>Dev2.12.53</version>
- 		</dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -57,10 +67,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>${project.basedir}/src/main/resources</directory>
-			</resource>		
-		</resources>
 	</build>
 </project>
