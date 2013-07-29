@@ -23,10 +23,16 @@ public class CDT extends JavaPlugin {
 	public void onEnable() {
 		loadconfig();
 		checkessentials();
+//		checkessentialsspawn();
 		checkvault();
 		getServer().getPluginManager().registerEvents(new Teleportlistener(config), this);
 		getCommand("cdt").setExecutor(new Commandlistener(config));
 	}
+
+//	private void checkessentialsspawn() {
+//		// TODO Auto-generated method stub
+		
+//	}
 
 	private void checkvault() {
 		if(getServer().getPluginManager().getPlugin("Vault") == null) {
