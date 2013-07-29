@@ -18,10 +18,6 @@
 			<url>http://repo.bukkit.org/content/groups/public</url>
 		</repository>
 		<repository>
-			<id>milkbowl-repo</id>
-			<url>http://ci.herocraftonline.com/plugin/repository/everything/</url>
-		</repository>
-		<repository>
   			<id>deery50-repo</id>
   			<name>Deery50's Maven Releases</name>
   			<url>https://repository-deery50.forge.cloudbees.com/release</url>
