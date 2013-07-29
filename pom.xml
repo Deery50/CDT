@@ -35,7 +35,7 @@
 		<dependency>
   			<groupId>com.earth2me.essentials</groupId>
   			<artifactId>Essentials</artifactId>
- 			<version>Dev2.12.53</version>
+ 			<version>Dev2.12.54</version>
  		</dependency>
   		<dependency>
   			<groupId>net.milkbowl.vault</groupId>
