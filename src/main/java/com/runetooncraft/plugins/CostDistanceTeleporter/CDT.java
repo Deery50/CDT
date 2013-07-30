@@ -33,7 +33,7 @@ public class CDT extends JavaPlugin {
 		getCommand("cdt").setExecutor(new Commandlistener(config));
 	}
 
-	private void checkessentialsspawn() {
+	private void checkessentialsspawn() { //Can now support /spawn
 		if(getServer().getPluginManager().isPluginEnabled("EssentialsSpawn")) {
 			Messenger.info("Essentials-Spawn integration enabled");
 			EssentialsSpawn = spawnymlcheck();
