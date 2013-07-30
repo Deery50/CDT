@@ -10,3 +10,4 @@
 *.war
 *.ear
 /bin
+/target

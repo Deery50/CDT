@@ -41,6 +41,7 @@ public class Config {
 		config.addDefault("CDT.prefix", "&a[CDT]&b");
 		config.addDefault("CDT.MoneyMultiplierPerblock", 1);
 		config.addDefault("CDT.Commandsenabled.warp", true);
+		config.addDefault("CDT.Commandsenabled.spawn", true);
 		config.addDefault("CDT.stats.money", 0);
 		config.options().copyDefaults(true);
 		Messenger.info("Config Defaults loaded for the first time.");

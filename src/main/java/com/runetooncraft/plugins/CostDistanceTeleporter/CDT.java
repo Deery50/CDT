@@ -6,6 +6,8 @@ import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,22 +19,45 @@ public class CDT extends JavaPlugin {
 	 * it is the only warp plugin that CDT works with at the moment. More could possibly come later.
 	 */
 	Config config = null;
+	static HandleOutsideConfigs spawnyml = null;
 	public static IEssentials ess;
 	public static Economy econ;
 	public static Permission perms;
+	public static boolean EssentialsSpawn;
 	public void onEnable() {
 		loadconfig();
 		checkessentials();
-//		checkessentialsspawn();
+		checkessentialsspawn();
 		checkvault();
 		getServer().getPluginManager().registerEvents(new Teleportlistener(config), this);
 		getCommand("cdt").setExecutor(new Commandlistener(config));
 	}
 
-//	private void checkessentialsspawn() {
-//		// TODO Auto-generated method stub
+	private void checkessentialsspawn() {
+		if(getServer().getPluginManager().isPluginEnabled("EssentialsSpawn")) {
+			Messenger.info("Essentials-Spawn integration enabled");
+			EssentialsSpawn = spawnymlcheck();
+		}else{
+			EssentialsSpawn = false;
+		}
+	}
+	public static Location parseSpawnYmlLoc() {
+		String worldstring = spawnyml.getConfig().getString("spawns.default.world");
+		int x = spawnyml.getConfig().getInt("spawns.default.x");
+		int y = spawnyml.getConfig().getInt("spawns.default.y");
+		int z = spawnyml.getConfig().getInt("spawns.default.z");
+		return new Location(Bukkit.getWorld(worldstring), x, y, z);
+	}
+	private boolean spawnymlcheck() {
+		File file = new File(ess.getDataFolder(), "spawn.yml");
+		spawnyml = new HandleOutsideConfigs(file);
+		if (!spawnyml.load()) {
+			return false;
+		}else{
+			return true;
+		}
 		
-//	}
+	}
 
 	private void checkvault() {
 		if(getServer().getPluginManager().getPlugin("Vault") == null) {
@@ -69,7 +94,7 @@ public class CDT extends JavaPlugin {
 	private void checkessentials() {
 		Plugin essPlugin;
 		if(getServer().getPluginManager().isPluginEnabled("Essentials")) {
-			Messenger.info("Found Essentials");
+			Messenger.info("Essentials integration enabled");
 			essPlugin = Bukkit.getPluginManager().getPlugin("Essentials");
 			ess = (IEssentials)essPlugin;
 		}else{
