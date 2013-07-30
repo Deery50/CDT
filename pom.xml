@@ -29,7 +29,7 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
 			<version>1.6.2-R0.1-SNAPSHOT</version>
-			<type>jar</type>"pom.xml"
+			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
