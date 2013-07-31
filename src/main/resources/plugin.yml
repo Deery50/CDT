@@ -1,6 +1,6 @@
 main: com.runetooncraft.plugins.CostDistanceTeleporter.CDT
 name: CDT
-version: 1.0.1
+version: 1.0.2
 depend: [Vault, Essentials]
 author: Deery50
 description: Money cost per type of Teleport
