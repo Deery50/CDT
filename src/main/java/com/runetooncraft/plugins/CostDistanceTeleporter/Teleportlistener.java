@@ -30,7 +30,7 @@ public class Teleportlistener implements Listener {
 		String input = event.getMessage();
 		String[] args = input.split(" ");
 		if(args[0].equals("/warp") && args.length == 2) {
-			if(CDT.perms.has(p, "essentials.warps." + args[1]) || CDT.perms.has(p, "essentials.warps.*") || !CDT.PerWarpPermissions) {
+			if(CDT.perms.has(p, "essentials.warps." + args[1]) && config.getbool("CDT.Commandsenabled.warp") || CDT.perms.has(p, "essentials.warps.*") || !CDT.PerWarpPermissions || !CDT.permsenabled) {
 				try {
 					Location warploc = CDT.ess.getWarps().getWarp(args[1]).getBlock().getLocation();
 					int Cost = parseLocation.getDistanceCost(p.getLocation(), warploc);
@@ -65,7 +65,7 @@ public class Teleportlistener implements Listener {
 				}
 			}
 		}
-	}else if(event.getMessage().startsWith("/spawn") && config.getbool("CDT.Commandsenabled.spawn") && CDT.EssentialsSpawn) {
+	}else if(event.getMessage().startsWith("/spawn") && config.getbool("CDT.Commandsenabled.spawn") && CDT.EssentialsSpawn || !CDT.permsenabled) {
 		Player p = event.getPlayer();
 			Location spawnloc = CDT.parseSpawnYmlLoc();
 			int Cost = parseLocation.getDistanceCost(p.getLocation(), spawnloc);

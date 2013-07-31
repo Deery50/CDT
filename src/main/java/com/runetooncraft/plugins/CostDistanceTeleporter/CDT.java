@@ -27,6 +27,7 @@ public class CDT extends JavaPlugin {
 	public static boolean EssentialsSpawn;
 	public static boolean Essentials;
 	public static boolean PerWarpPermissions;
+	public static boolean permsenabled;
 	public void onEnable() {
 		loadconfig();
 		checkessentials();
@@ -34,7 +35,17 @@ public class CDT extends JavaPlugin {
 		checkvault();
 		getServer().getPluginManager().registerEvents(new Teleportlistener(config), this);
 		getCommand("cdt").setExecutor(new Commandlistener(config));
-		Messenger.info("Per-Warp-Permissions set to: " + PerWarpPermissions);
+		checkperms();
+	}
+
+	private void checkperms() {
+		if(perms.isEnabled()) {
+			Messenger.info("Logged into permissions with Per-Warp-Permissions set to " + PerWarpPermissions);
+			permsenabled = true;
+		}else{
+			Messenger.info("Permissions integration disabled, no permissions plugin found.");
+			permsenabled = false;
+		}
 	}
 
 	private void checkessentialsspawn() { //Can now support /spawn
