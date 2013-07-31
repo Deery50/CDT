@@ -43,7 +43,7 @@ public class CDT extends JavaPlugin {
 			Messenger.info("Permissions logged, per-warp-permissions:" + PerWarpPermissions);
 			permsenabled = true;
 		}else{
-			Messenger.info("Permissions integration disabled, no permissions plugin found.");
+			Messenger.info("Permissions integration not enabled.");
 			permsenabled = false;
 		}
 	}
