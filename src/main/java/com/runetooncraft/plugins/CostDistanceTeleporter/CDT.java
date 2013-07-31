@@ -20,6 +20,7 @@ public class CDT extends JavaPlugin {
 	 */
 	Config config = null;
 	static HandleOutsideConfigs spawnyml = null;
+	static HandleOutsideConfigs essconf = null;
 	public static IEssentials ess;
 	public static Economy econ;
 	public static Permission perms;
@@ -58,7 +59,6 @@ public class CDT extends JavaPlugin {
 		}
 		
 	}
-
 	private void checkvault() {
 		if(getServer().getPluginManager().getPlugin("Vault") == null) {
 			Messenger.severe("Vault not found, CDT disabling");
