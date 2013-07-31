@@ -25,6 +25,8 @@ public class CDT extends JavaPlugin {
 	public static Economy econ;
 	public static Permission perms;
 	public static boolean EssentialsSpawn;
+	public static boolean Essentials;
+	public static boolean PerWarpPermissions;
 	public void onEnable() {
 		loadconfig();
 		checkessentials();
@@ -32,6 +34,7 @@ public class CDT extends JavaPlugin {
 		checkvault();
 		getServer().getPluginManager().registerEvents(new Teleportlistener(config), this);
 		getCommand("cdt").setExecutor(new Commandlistener(config));
+		Messenger.info("Per-Warp-Permissions set to: " + PerWarpPermissions);
 	}
 
 	private void checkessentialsspawn() { //Can now support /spawn
@@ -59,6 +62,20 @@ public class CDT extends JavaPlugin {
 		}
 		
 	}
+	private boolean essymlcheck() {
+		File file = new File(ess.getDataFolder(), "config.yml");
+		essconf = new HandleOutsideConfigs(file);
+		if (!essconf.load()) {
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
+	private void setupessconfig() {
+		PerWarpPermissions = essconf.getConfig().getBoolean("per-warp-permission");
+	}
+
 	private void checkvault() {
 		if(getServer().getPluginManager().getPlugin("Vault") == null) {
 			Messenger.severe("Vault not found, CDT disabling");
@@ -97,6 +114,10 @@ public class CDT extends JavaPlugin {
 			Messenger.info("Essentials integration enabled");
 			essPlugin = Bukkit.getPluginManager().getPlugin("Essentials");
 			ess = (IEssentials)essPlugin;
+			Essentials = essymlcheck();
+			if(essymlcheck()) {
+				setupessconfig();
+			}
 		}else{
 			Messenger.severe("Essentials not found, CDT disabling");
 			this.getServer().getPluginManager().disablePlugin(this);

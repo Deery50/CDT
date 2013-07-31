@@ -30,7 +30,7 @@ public class Teleportlistener implements Listener {
 		String input = event.getMessage();
 		String[] args = input.split(" ");
 		if(args[0].equals("/warp") && args.length == 2) {
-			if(CDT.perms.has(p, "essentials.warps." + args[1]) || CDT.perms.has(p, "essentials.warps.*")) {
+			if(CDT.perms.has(p, "essentials.warps." + args[1]) || CDT.perms.has(p, "essentials.warps.*") || !CDT.PerWarpPermissions) {
 				try {
 					Location warploc = CDT.ess.getWarps().getWarp(args[1]).getBlock().getLocation();
 					int Cost = parseLocation.getDistanceCost(p.getLocation(), warploc);
