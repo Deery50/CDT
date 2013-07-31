@@ -39,8 +39,8 @@ public class CDT extends JavaPlugin {
 	}
 
 	private void checkperms() {
-		if(perms.isEnabled()) {
-			Messenger.info("Logged into permissions with Per-Warp-Permissions set to " + PerWarpPermissions);
+		if(perms.getName() != null) {
+			Messenger.info("Permissions logged, with Per-Warp-Permissions set to " + PerWarpPermissions);
 			permsenabled = true;
 		}else{
 			Messenger.info("Permissions integration disabled, no permissions plugin found.");
