@@ -33,29 +33,14 @@ public class Teleportlistener implements Listener {
 			if(CDT.perms.has(p, "essentials.warps." + args[1]) && config.getbool("CDT.Commandsenabled.warp") || CDT.perms.has(p, "essentials.warps.*") || !CDT.PerWarpPermissions || !CDT.permsenabled) {
 				try {
 					Location warploc = CDT.ess.getWarps().getWarp(args[1]).getBlock().getLocation();
-					int Cost = parseLocation.getDistanceCost(p.getLocation(), warploc);
-					if(Playerwarpdata.get(p) == null) {
-						Messenger.playermessage("Warping to " + args[1] + " will cost " + Cost + " " + Cvalue + ". Type [/warp " + args[1] + "] again to pay this amount and teleport.", p);
-						Playerwarpdata.put(p, args[1]);
-						event.setCancelled(true);
+					if(p.getLocation().getWorld().equals(warploc.getWorld())) {
+						HandleWarp(event,args,warploc,Cvalue);
 					}else{
-					if(Playerwarpdata.get(p).equals(args[1])) {
-							if(CDT.econ.has(p.getName(), Cost)) {
-								EconomyResponse r = CDT.econ.withdrawPlayer(p.getName(), Cost);
-								Messenger.playermessage(Cost + " " + Cvalue + " was deducted from your account to warp to " + args[1], p);
-								config.addint("CDT.stats.money", Cost);
-								Playerwarpdata.remove(p);
-								event.setCancelled(false);
-							}else{
-								Messenger.playermessage("You do not have sufficient funds to warp to " + args[1] + ". You require " + Cost + " " + Cvalue + ", but only have " + CDT.econ.getBalance(p.getName()) + " " + Cvalue + ".", p);
-								Playerwarpdata.remove(p);
-								event.setCancelled(true);
-							}
-							//TODO: Currency check (if player has enough money for warp), Taking money away and warping, clear hashmap of this value.
-						}else{
-							Messenger.playermessage("Warping to " + args[1] + " will cost " + Cost + " " + Cvalue + ". Type [/warp " + args[1] + "] again to pay this amount and teleport.", p);
-							Playerwarpdata.put(p, args[1]);
+						if(config.getbool("CDT.MultiWorldSupport") == false) {
+							Messenger.playermessage("Multi-world warp support is not enabled.", p);
 							event.setCancelled(true);
+						}else{
+							HandleWarp(event,args,warploc,Cvalue);
 						}
 					}
 				} catch (WarpNotFoundException e) {
@@ -98,5 +83,34 @@ public class Teleportlistener implements Listener {
 	}else{
 		event.setCancelled(false);
 	}
+	}
+	
+	private void HandleWarp(PlayerCommandPreprocessEvent event, String[] args, Location warploc, String Cvalue) {
+		Player p = event.getPlayer();
+		int Cost = parseLocation.getDistanceCost(p.getLocation(), warploc);
+		if(Playerwarpdata.get(p) == null) {
+			Messenger.playermessage("Warping to " + args[1] + " will cost " + Cost + " " + Cvalue + ". Type [/warp " + args[1] + "] again to pay this amount and teleport.", p);
+			Playerwarpdata.put(p, args[1]);
+			event.setCancelled(true);
+		}else{
+			if(Playerwarpdata.get(p).equals(args[1])) {
+				if(CDT.econ.has(p.getName(), Cost)) {
+					EconomyResponse r = CDT.econ.withdrawPlayer(p.getName(), Cost);
+					Messenger.playermessage(Cost + " " + Cvalue + " was deducted from your account to warp to " + args[1], p);
+					config.addint("CDT.stats.money", Cost);
+					Playerwarpdata.remove(p);
+					event.setCancelled(false);
+				}else{
+					Messenger.playermessage("You do not have sufficient funds to warp to " + args[1] + ". You require " + Cost + " " + Cvalue + ", but only have " + CDT.econ.getBalance(p.getName()) + " " + Cvalue + ".", p);
+					Playerwarpdata.remove(p);
+					event.setCancelled(true);
+				}
+				//TODO: Currency check (if player has enough money for warp), Taking money away and warping, clear hashmap of this value.
+			}else{
+				Messenger.playermessage("Warping to " + args[1] + " will cost " + Cost + " " + Cvalue + ". Type [/warp " + args[1] + "] again to pay this amount and teleport.", p);
+				Playerwarpdata.put(p, args[1]);
+				event.setCancelled(true);
+			}
+		}
 	}
 }
