@@ -36,7 +36,7 @@ public class Teleportlistener implements Listener {
 					if(p.getLocation().getWorld().equals(warploc.getWorld())) {
 						HandleWarp(event,args,warploc,Cvalue);
 					}else{
-						if(config.getbool("CDT.MultiWorldSupport") == false) {
+						if(config.getbool("CDT.MultiWorld.Support") == false) {
 							Messenger.playermessage("Multi-world warp support is not enabled.", p);
 							event.setCancelled(true);
 						}else{
