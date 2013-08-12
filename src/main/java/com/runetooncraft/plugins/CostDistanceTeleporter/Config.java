@@ -42,9 +42,10 @@ public class Config {
 		config.addDefault("CDT.MoneyMultiplierPerblock", 1);
 		config.addDefault("CDT.Commandsenabled.warp", true);
 		config.addDefault("CDT.Commandsenabled.spawn", true);
-		config.addDefault("CDT.MultiWorldSupport", true);
-		config.addDefault("CDT.EnableWorldChangeCost", false);
-		config.addDefault("CDT.WorldChangeCost", 5);
+		config.addDefault("CDT.MultiWorld.Support", true);
+		config.addDefault("CDT.MultiWorld.EnableWorldChangeCost", false);
+		config.addDefault("CDT.MultiWorld.WorldChangeCost", 5);
+		config.addDefault("CDT.MultiWorld.EnableCoordinateDistanceCost", true);
 		config.addDefault("CDT.stats.money", 0);
 		config.options().copyDefaults(true);
 		Messenger.info("Config Defaults loaded for the first time.");

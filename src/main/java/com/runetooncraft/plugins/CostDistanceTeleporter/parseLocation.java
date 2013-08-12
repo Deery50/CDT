@@ -16,14 +16,17 @@ public class parseLocation {
 				int out = multivalue * distanceint;
 				return out;
 			}else{
-				if(config.getbool("CDT.MultiWorldSupport")) {
-					if(config.getbool("CDT.EnableWorldChangeCost")) {
-						int WorldChangeCost = config.getint("CDT.WorldChangeCost");
+				if(config.getbool("CDT.MultiWorld.Support")) {
+					if(config.getbool("CDT.MultiWorld.EnableWorldChangeCost")) {
+						int WorldChangeCost = config.getint("CDT.MultiWorld.WorldChangeCost");
 						Loc2 = ParseWorldLocation(Loc1, Loc2);
-						double distance = Loc1.distance(Loc2);
-						int distanceint = (int) distance;
-						int multivalue = config.getint("CDT.MoneyMultiplierPerblock");
-						int out = multivalue * distanceint;
+						int out = 0;
+						if(config.getbool("CDT.MultiWorld.EnableCoordinateDistanceCost")) {
+							double distance = Loc1.distance(Loc2);
+							int distanceint = (int) distance;
+							int multivalue = config.getint("CDT.MoneyMultiplierPerblock");
+							out = multivalue * distanceint;
+						}
 						out = out + WorldChangeCost;
 						return out;
 					}else{
