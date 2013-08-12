@@ -50,7 +50,7 @@ public class Teleportlistener implements Listener {
 				}
 			}
 		}
-	}else if(event.getMessage().startsWith("/spawn") && config.getbool("CDT.Commandsenabled.spawn") && CDT.EssentialsSpawn || !CDT.permsenabled) {
+	}else if(event.getMessage().startsWith("/spawn") && config.getbool("CDT.Commandsenabled.spawn") && CDT.EssentialsSpawn || event.getMessage().startsWith("/spawn") && !CDT.permsenabled) {
 		Player p = event.getPlayer();
 			Location spawnloc = CDT.parseSpawnYmlLoc();
 			int Cost = parseLocation.getDistanceCost(p.getLocation(), spawnloc);
